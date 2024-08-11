@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+         
+        body {
+            background-color: #2e2e2e;
+            color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            background: #333;
+            color: #f0f0f0;
+            padding: 3rem 0;
+            border-bottom: 2px solid #444;
+        }
+
+        header h1 {
+            text-align: center;
+            color: #ff5722;
+            margin: 0;
+            padding-bottom: 20px;
+        }
+
+        .line1 {
+            width: 300px;
+            height: 3px;
+            background-color: white;
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+
+        
+        nav {
+            text-align: center;  
+            padding-top: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: bolder;
+        }
+
+        main {
+            padding-bottom: 10px;
+            padding: 5rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 2rem;
+            background: #444;
+            border-radius: 8px;
+        }
+
+        .hero h2 {
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            background: #333;
+            color: #f0f0f0;
+            padding: 1rem 0;
+            border-top: 2px solid #444;
+            text-align: center;
+        }
+
+        footer p {
+            padding-top: 10px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Inventory and Order Management System</h1>
+        </div>
+        <div class="line1"></div>
+        <nav>
+            <ul><h2>
+                
+                <li><a href="{% url 'categories' %}">Categories</a></li>
+                <li><a href="{% url 'orders' %}">Orders</a></li>
+                <li><a href="{% url 'items' %}">Items</a></li>
+                <li><a href="{% url 'employees' %}">Employees</a></li>
+                <li><a href="{% url 'suppliers' %}">Suppliers</a></li>
+                <li><a href="{% url 'units' %}">Units</a></li>
+            </h2>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <h2>Welcome to the Inventory and Order Management System</h2>
+            
+        </section>
+    </main>
+<br>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Inventory and Order Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

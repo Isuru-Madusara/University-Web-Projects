@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management</title>
+</head>
+<style>
+    body {
+        background-color: #2e2e2e;
+        color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #ff5722;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+    form label, form lable {
+        margin-right: 10px;
+        font-size: 1.2em;
+    }
+    form input {
+        padding: 10px;
+        margin-right: 10px;
+        border: 1px solid #555;
+        border-radius: 5px;
+        background-color: #444;
+        color: #fff;
+    }
+    form button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff5722;
+        color: #fff;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    form button:hover {
+        background-color: #e64a19;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    table, th, td {
+        border: 1px solid #444;
+    }
+    th, td {
+        padding: 15px;
+        text-align: left;
+    }
+    th {
+        background-color: #555;
+    }
+    td {
+        background-color: #333;
+    }
+    td button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff5722;
+        color: #fff;
+        cursor: pointer;
+    }
+    td button:hover {
+        background-color: #e64a19;
+    }
+    button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff5722;
+        color: #fff;
+        cursor: pointer;
+            margin-right: 10px;}
+    input{
+        padding: 10px;
+        margin-right: 10px;
+        border: 1px solid #555;
+        border-radius: 5px;
+        background-color: #444;
+        color: #fff;
+    }
+    input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff5722;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+    }
+    input[type="submit"]:hover {
+            background-color: #e64a19;
+        }
+    
+    .pagination {
+        text-align: center;
+    }
+    .pagination button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff5722;
+        color: #fff;
+        cursor: pointer;
+        margin: 0 5px;
+    }
+    .pagination button:hover {
+        background-color: #e64a19;
+    }
+    .pagination label {
+        font-size: 1.2em;
+    }
+    li{
+            list-style: none;
+            text-align: center;
+        }
+        a{
+            color: #ff5722;
+            text-decoration: none;
+        }
+</style>
+<body>
+    <h1><u>Order Management</u></h1>
+    <br>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Save">
+     </form>
+
+     <label>Name Contains</label>
+     <input>
+     <button>Search</button>
+     <br>
+     <br>
+
+     <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Date</th>
+            <th>Items</th>
+            <th>Action</th>
+        </tr>
+        {% for order in ordrs %}
+        <tr>
+            <td>{{order.id}}</td>
+            <td>{{order.customer}}</td>
+            <td>{{order.date}}</td>
+            <td>{{order.item.all|join:", "}}</td>
+            <td><button>View</button></td>
+        </tr>
+        {% endfor %}
+     </table>
+
+     <div class="pagination">
+        <!-- Assuming you will add pagination logic later -->
+        <button>Previous</button>
+        <label>1</label>
+        <button>Next</button>
+    </div>
+    <li><a href="{% url 'home' %}"><h3>Home Page</h3></a></li>
+
+</body>
+</html>

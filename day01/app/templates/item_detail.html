@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Detail</title>
+    <style>
+        body {
+            background-color: #2e2e2e;
+            color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center; 
+        }
+        h1 {
+            color: #ff5722;
+        }
+        img {
+            display: block;  
+            margin: 0 auto;  
+        }
+        a {
+            color: #ff5722;
+            text-decoration: none;
+        }
+        a h3 {
+            margin: 0;
+        }
+    </style>
+    {% load static %}
+    
+</head>
+<body>
+    
+    <h1>{{ item.name }}</h1>
+    <br>
+    <p>Price: {{ item.price }}</p>
+    <p>Category: {{ item.category }}</p>
+    <p>Unit: {{ item.unit }}</p>
+    <br>
+    <img src="{% static item.image %}" alt="{{ item.name }}" width="200">
+    <br>
+    <br>
+    <a href="{% url 'items' %}"><h3>Back to item list</h3></a>
+</body>
+</html>

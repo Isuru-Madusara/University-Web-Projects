@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Management</title>
+    <style>
+        body {
+            background-color: #2e2e2e;
+            color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #ff5722;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        form label {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        form input, input {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff5722;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #e64a19;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff5722;
+            color: #fff;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        li{
+            list-style: none;
+            text-align: center;
+        }
+        a{
+            color: #ff5722;
+            text-decoration: none;
+        }
+        button:hover {
+            background-color: #e64a19;
+        }
+        table {
+            margin: auto;
+            width: 80%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #444;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+        th {
+            background-color: #555;
+        }
+        td {
+            background-color: #333;
+        }
+        td button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff5722;
+            color: #fff;
+            cursor: pointer;
+        }
+        td button:hover {
+            background-color: #e64a19;
+        }
+        .pagination {
+            text-align: center;
+        }
+        .pagination button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff5722;
+            color: #fff;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        .pagination button:hover {
+            background-color: #e64a19;
+        }
+        .pagination label {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1><u>Category Management</u></h1>
+   
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <br>
+        
+        <input type="submit" value="Save">
+    </form>
+
+    <form method="get">
+        <label for="name">Name Contains</label>
+        <input name="name" id="name" />
+        <button type="submit">Search</button>
+    </form>
+    <br>
+    
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Action</th>   
+        </tr>
+        {% for category in page %}
+        <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td><button onclick="location.href='view/{{ category.id }}'">View</button></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="pagination">
+        {% if page.has_previous %}
+        <button onclick="location.href='?page=1'">&laquo; First</button>
+        <button onclick="location.href='?page={{ page.previous_page_number }}'">Previous</button>
+        {% endif %}
+        
+        <span>Page {{ page.number }} of {{ page.paginator.num_pages }}</span>
+
+        {% if page.has_next %}
+        <button onclick="location.href='?page={{ page.next_page_number }}'">Next</button>
+        <button onclick="location.href='?page={{ page.paginator.num_pages }}'">Last &raquo;</button>
+        {% endif %}
+    </div>
+    <br>
+    <li><a href="{% url 'home' %}"><h3>Home Page</h3></a></li>
+ 
+</body>
+</html>
